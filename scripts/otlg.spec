@@ -1,12 +1,19 @@
 # -*- mode: python ; coding: utf-8 -*-
 # PyInstaller spec for otlg binary
 
+import os
+from pathlib import Path
+
+# Project root is one level up from this spec file
+SPEC_DIR = Path(SPECPATH)
+PROJECT_DIR = SPEC_DIR.parent
+
 a = Analysis(
-    ['otlg_entry.py'],
-    pathex=[],
+    [str(SPEC_DIR / 'otlg_entry.py')],
+    pathex=[str(PROJECT_DIR)],
     binaries=[],
     datas=[
-        ('ontology_explorer/data', 'ontology_explorer/data'),
+        (str(PROJECT_DIR / 'ontology_explorer' / 'data'), 'ontology_explorer/data'),
     ],
     hiddenimports=[],
     hookspath=[],

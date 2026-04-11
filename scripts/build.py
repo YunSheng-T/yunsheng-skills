@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Build otlg binary using PyInstaller."""
+"""Build otlg binary using PyInstaller.
+
+Usage:
+    uv run scripts/build.py
+"""
 
 import subprocess
 import sys
@@ -7,13 +11,16 @@ from pathlib import Path
 
 
 def main():
-    project_dir = Path(__file__).parent
-    spec_file = project_dir / "otlg.spec"
+    scripts_dir = Path(__file__).parent
+    project_dir = scripts_dir.parent
+    spec_file = scripts_dir / "otlg.spec"
 
     cmd = [
         sys.executable, "-m", "PyInstaller",
         "--clean",
         "--noconfirm",
+        "--distpath", str(project_dir / "dist"),
+        "--workpath", str(project_dir / "build"),
         str(spec_file),
     ]
 
@@ -23,7 +30,8 @@ def main():
 
     if result.returncode == 0:
         dist_dir = project_dir / "dist"
-        binary = dist_dir / "otlg"
+        binary_name = "otlg.exe" if sys.platform == "win32" else "otlg"
+        binary = dist_dir / binary_name
         if binary.exists():
             size_mb = binary.stat().st_size / (1024 * 1024)
             print(f"\nBuild successful!")

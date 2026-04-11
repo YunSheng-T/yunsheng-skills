@@ -4,7 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Python 3.12 project named `yunsheng-skills`, managed with [uv](https://github.com/astral-sh/uv) (v0.11.2). No dependencies yet.
+Python 3.12 project `yunsheng-skills`, managed with [uv](https://github.com/astral-sh/uv) (v0.11.2).
+Provides an ontology exploration CLI (`otlg`) and Claude Code Agent Skill.
 
 ## Environment
 
@@ -15,12 +16,31 @@ Python 3.12 project named `yunsheng-skills`, managed with [uv](https://github.co
 ## Commands
 
 ```bash
-# Run the project
-uv run main.py
+# Generate demo data
+uv run python -m ontology_explorer.seed
 
-# Add dependencies
-uv add <package>
+# Run CLI (after uv sync)
+otlg types
+otlg type Supplier
+otlg instances Supplier --limit 5
 
-# Run a script with uv (no manual activation needed)
-uv run python <script.py>
+# Build binary (PyInstaller)
+uv run scripts/build.py
+
+# Sync dependencies
+uv sync
+```
+
+## Structure
+
+```
+ontology_explorer/     # Core package
+├── core/              #   models, store, query engine
+├── cli/               #   CLI entry point and commands
+├── data/              #   ontology.json + instance JSON files
+└── seed.py            #   data generation script
+
+skills/                # Skill distribution (for this repo)
+.claude/skills/        # Skill auto-discovery (local)
+scripts/               # Build scripts (PyInstaller)
 ```

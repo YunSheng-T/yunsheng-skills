@@ -2,9 +2,11 @@
 __pycache__/
 *.py[cod]
 *.egg-info/
+.eggs/
+
+# Build
 dist/
 build/
-.eggs/
 
 # uv
 uv.lock
