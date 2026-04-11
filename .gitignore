@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# uv
+uv.lock
+
+# IDE
+.idea/
+*.iml
+
+# venv
+.venv/
+
+# OS
+.DS_Store

@@ -1,0 +1,1924 @@
+{
+  "objectTypes": [
+    {
+      "apiName": "Supplier",
+      "displayName": "供应商",
+      "pluralDisplayName": "供应商列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "name",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "供应商ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "name",
+          "displayName": "供应商名称",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "country",
+          "displayName": "国家",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "rating",
+          "displayName": "评分",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "contact_email",
+          "displayName": "联系邮箱",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "供应链中的供应商实体",
+      "icon": {
+        "locator": "people",
+        "color": "#F2994A"
+      },
+      "status": "active",
+      "domain": "supply_chain",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "ScProduct",
+      "displayName": "产品",
+      "pluralDisplayName": "产品列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "name",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "产品ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "name",
+          "displayName": "产品名称",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "category",
+          "displayName": "类别",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "unit_price",
+          "displayName": "单价",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "weight",
+          "displayName": "重量(kg)",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "supplier_id",
+          "displayName": "供应商ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "供应链中的产品",
+      "icon": {
+        "locator": "box",
+        "color": "#2D9CDB"
+      },
+      "status": "active",
+      "domain": "supply_chain",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "Warehouse",
+      "displayName": "仓库",
+      "pluralDisplayName": "仓库列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "name",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "仓库ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "name",
+          "displayName": "仓库名称",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "location",
+          "displayName": "位置",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "capacity",
+          "displayName": "容量",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "latitude",
+          "displayName": "纬度",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "longitude",
+          "displayName": "经度",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "address",
+          "displayName": "地址",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "仓储设施",
+      "icon": {
+        "locator": "office",
+        "color": "#27AE60"
+      },
+      "status": "active",
+      "domain": "supply_chain",
+      "implementsInterfaces": [
+        "Auditable",
+        "GeoLocated"
+      ]
+    },
+    {
+      "apiName": "PurchaseOrder",
+      "displayName": "采购单",
+      "pluralDisplayName": "采购单列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "id",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "采购单ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "supplier_id",
+          "displayName": "供应商ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "total_amount",
+          "displayName": "总金额",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "status",
+          "displayName": "状态",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "采购订单",
+      "icon": {
+        "locator": "document",
+        "color": "#EB5757"
+      },
+      "status": "active",
+      "domain": "supply_chain",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "Shipment",
+      "displayName": "发货单",
+      "pluralDisplayName": "发货单列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "tracking_number",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "发货单ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "purchase_order_id",
+          "displayName": "采购单ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "warehouse_id",
+          "displayName": "仓库ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "tracking_number",
+          "displayName": "追踪号",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "status",
+          "displayName": "状态",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "物流发货记录",
+      "icon": {
+        "locator": "truck",
+        "color": "#9B51E0"
+      },
+      "status": "active",
+      "domain": "supply_chain",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "FiCustomer",
+      "displayName": "客户",
+      "pluralDisplayName": "客户列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "name",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "客户ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "name",
+          "displayName": "客户姓名",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "tier",
+          "displayName": "客户等级",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "risk_level",
+          "displayName": "风险等级",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "kyc_status",
+          "displayName": "KYC状态",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "开户时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "金融服务客户",
+      "icon": {
+        "locator": "person",
+        "color": "#2F80ED"
+      },
+      "status": "active",
+      "domain": "finance",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "Account",
+      "displayName": "账户",
+      "pluralDisplayName": "账户列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "id",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "账户ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "customer_id",
+          "displayName": "客户ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "type",
+          "displayName": "账户类型",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "balance",
+          "displayName": "余额",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "currency",
+          "displayName": "币种",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "opened_at",
+          "displayName": "开户日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "银行账户",
+      "icon": {
+        "locator": "bank-account",
+        "color": "#27AE60"
+      },
+      "status": "active",
+      "domain": "finance",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "Transaction",
+      "displayName": "交易",
+      "pluralDisplayName": "交易列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "id",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "交易ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "from_account",
+          "displayName": "转出账户",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "to_account",
+          "displayName": "转入账户",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "amount",
+          "displayName": "金额",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "type",
+          "displayName": "交易类型",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "timestamp",
+          "displayName": "交易时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "资金交易记录",
+      "icon": {
+        "locator": "exchange",
+        "color": "#F2994A"
+      },
+      "status": "active",
+      "domain": "finance",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "FiProduct",
+      "displayName": "金融产品",
+      "pluralDisplayName": "金融产品列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "name",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "产品ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "name",
+          "displayName": "产品名称",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "category",
+          "displayName": "产品类别",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "interest_rate",
+          "displayName": "利率",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "min_investment",
+          "displayName": "最低投资额",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "理财产品、贷款等金融产品",
+      "icon": {
+        "locator": "layers",
+        "color": "#9B51E0"
+      },
+      "status": "active",
+      "domain": "finance",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "Patient",
+      "displayName": "患者",
+      "pluralDisplayName": "患者列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "name",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "患者ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "name",
+          "displayName": "姓名",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "dob",
+          "displayName": "出生日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "blood_type",
+          "displayName": "血型",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "insurance_id",
+          "displayName": "保险ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "患者基本信息",
+      "icon": {
+        "locator": "person",
+        "color": "#EB5757"
+      },
+      "status": "active",
+      "domain": "healthcare",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "Provider",
+      "displayName": "医疗机构",
+      "pluralDisplayName": "医疗机构列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "name",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "机构ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "name",
+          "displayName": "机构名称",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "type",
+          "displayName": "机构类型",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "location",
+          "displayName": "位置",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "accreditation",
+          "displayName": "认证等级",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "latitude",
+          "displayName": "纬度",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "longitude",
+          "displayName": "经度",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "address",
+          "displayName": "地址",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "医院、诊所等医疗机构",
+      "icon": {
+        "locator": "office",
+        "color": "#2D9CDB"
+      },
+      "status": "active",
+      "domain": "healthcare",
+      "implementsInterfaces": [
+        "Auditable",
+        "GeoLocated"
+      ]
+    },
+    {
+      "apiName": "Diagnosis",
+      "displayName": "诊断",
+      "pluralDisplayName": "诊断列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "description",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "诊断ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "patient_id",
+          "displayName": "患者ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "provider_id",
+          "displayName": "机构ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "icd_code",
+          "displayName": "ICD编码",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "description",
+          "displayName": "诊断描述",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "date",
+          "displayName": "诊断日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "患者诊断记录",
+      "icon": {
+        "locator": "clipboard",
+        "color": "#F2994A"
+      },
+      "status": "active",
+      "domain": "healthcare",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "Medication",
+      "displayName": "药物",
+      "pluralDisplayName": "药物列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "name",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "药物ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "name",
+          "displayName": "药物名称",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "dosage_form",
+          "displayName": "剂型",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "manufacturer",
+          "displayName": "生产厂家",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "ndc_code",
+          "displayName": "NDC编码",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "药物信息",
+      "icon": {
+        "locator": "pill",
+        "color": "#27AE60"
+      },
+      "status": "active",
+      "domain": "healthcare",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "Encounter",
+      "displayName": "就诊记录",
+      "pluralDisplayName": "就诊记录列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "chief_complaint",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "就诊ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "patient_id",
+          "displayName": "患者ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "provider_id",
+          "displayName": "机构ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "type",
+          "displayName": "就诊类型",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "date",
+          "displayName": "就诊日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "chief_complaint",
+          "displayName": "主诉",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "患者就诊记录",
+      "icon": {
+        "locator": "pulse",
+        "color": "#9B51E0"
+      },
+      "status": "active",
+      "domain": "healthcare",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "EcomUser",
+      "displayName": "用户",
+      "pluralDisplayName": "用户列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "username",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "用户ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "username",
+          "displayName": "用户名",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "email",
+          "displayName": "邮箱",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "tier",
+          "displayName": "会员等级",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "registered_at",
+          "displayName": "注册时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "电商平台用户",
+      "icon": {
+        "locator": "person",
+        "color": "#2F80ED"
+      },
+      "status": "active",
+      "domain": "ecommerce",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "Merchant",
+      "displayName": "商家",
+      "pluralDisplayName": "商家列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "name",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "商家ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "name",
+          "displayName": "商家名称",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "category",
+          "displayName": "主营类目",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "rating",
+          "displayName": "评分",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "verified",
+          "displayName": "是否认证",
+          "type": "boolean",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "latitude",
+          "displayName": "纬度",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "longitude",
+          "displayName": "经度",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "address",
+          "displayName": "地址",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "平台商家/店铺",
+      "icon": {
+        "locator": "shop",
+        "color": "#F2994A"
+      },
+      "status": "active",
+      "domain": "ecommerce",
+      "implementsInterfaces": [
+        "Auditable",
+        "GeoLocated"
+      ]
+    },
+    {
+      "apiName": "EcomProduct",
+      "displayName": "商品",
+      "pluralDisplayName": "商品列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "name",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "商品ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "merchant_id",
+          "displayName": "商家ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "name",
+          "displayName": "商品名称",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "price",
+          "displayName": "价格",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "category",
+          "displayName": "类目",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "stock",
+          "displayName": "库存",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "平台上架商品",
+      "icon": {
+        "locator": "box",
+        "color": "#27AE60"
+      },
+      "status": "active",
+      "domain": "ecommerce",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "EcomOrder",
+      "displayName": "订单",
+      "pluralDisplayName": "订单列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "id",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "订单ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "user_id",
+          "displayName": "用户ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "product_id",
+          "displayName": "商品ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "quantity",
+          "displayName": "数量",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "total",
+          "displayName": "总金额",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "status",
+          "displayName": "订单状态",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "payment_method",
+          "displayName": "支付方式",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "下单时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "用户订单",
+      "icon": {
+        "locator": "shopping-cart",
+        "color": "#EB5757"
+      },
+      "status": "active",
+      "domain": "ecommerce",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "Review",
+      "displayName": "评价",
+      "pluralDisplayName": "评价列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "content",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "评价ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "user_id",
+          "displayName": "用户ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "product_id",
+          "displayName": "商品ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "rating",
+          "displayName": "评分",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "content",
+          "displayName": "评价内容",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "评价时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "商品评价",
+      "icon": {
+        "locator": "comment",
+        "color": "#9B51E0"
+      },
+      "status": "active",
+      "domain": "ecommerce",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    }
+  ],
+  "linkTypes": [
+    {
+      "apiName": "supplier_products",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Supplier",
+        "apiName": "products",
+        "displayName": "产品",
+        "pluralDisplayName": "产品列表"
+      },
+      "target": {
+        "objectApiName": "ScProduct",
+        "apiName": "supplier",
+        "displayName": "供应商",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "supplier_id",
+      "status": "active"
+    },
+    {
+      "apiName": "supplier_purchase_orders",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Supplier",
+        "apiName": "purchase_orders",
+        "displayName": "采购单",
+        "pluralDisplayName": "采购单列表"
+      },
+      "target": {
+        "objectApiName": "PurchaseOrder",
+        "apiName": "supplier",
+        "displayName": "供应商",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "supplier_id",
+      "status": "active"
+    },
+    {
+      "apiName": "warehouse_shipments",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Warehouse",
+        "apiName": "shipments",
+        "displayName": "发货单",
+        "pluralDisplayName": "发货单列表"
+      },
+      "target": {
+        "objectApiName": "Shipment",
+        "apiName": "warehouse",
+        "displayName": "仓库",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "warehouse_id",
+      "status": "active"
+    },
+    {
+      "apiName": "purchase_order_shipments",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "PurchaseOrder",
+        "apiName": "shipments",
+        "displayName": "发货单",
+        "pluralDisplayName": "发货单列表"
+      },
+      "target": {
+        "objectApiName": "Shipment",
+        "apiName": "purchase_order",
+        "displayName": "采购单",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "purchase_order_id",
+      "status": "active"
+    },
+    {
+      "apiName": "customer_accounts",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "FiCustomer",
+        "apiName": "accounts",
+        "displayName": "账户",
+        "pluralDisplayName": "账户列表"
+      },
+      "target": {
+        "objectApiName": "Account",
+        "apiName": "customer",
+        "displayName": "客户",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "customer_id",
+      "status": "active"
+    },
+    {
+      "apiName": "account_transactions_out",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Account",
+        "apiName": "outgoing_transactions",
+        "displayName": "转出交易",
+        "pluralDisplayName": "转出交易列表"
+      },
+      "target": {
+        "objectApiName": "Transaction",
+        "apiName": "from_account_ref",
+        "displayName": "转出账户",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "from_account",
+      "status": "active"
+    },
+    {
+      "apiName": "account_transactions_in",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Account",
+        "apiName": "incoming_transactions",
+        "displayName": "转入交易",
+        "pluralDisplayName": "转入交易列表"
+      },
+      "target": {
+        "objectApiName": "Transaction",
+        "apiName": "to_account_ref",
+        "displayName": "转入账户",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "to_account",
+      "status": "active"
+    },
+    {
+      "apiName": "patient_diagnoses",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Patient",
+        "apiName": "diagnoses",
+        "displayName": "诊断",
+        "pluralDisplayName": "诊断列表"
+      },
+      "target": {
+        "objectApiName": "Diagnosis",
+        "apiName": "patient",
+        "displayName": "患者",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "patient_id",
+      "status": "active"
+    },
+    {
+      "apiName": "patient_encounters",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Patient",
+        "apiName": "encounters",
+        "displayName": "就诊记录",
+        "pluralDisplayName": "就诊记录列表"
+      },
+      "target": {
+        "objectApiName": "Encounter",
+        "apiName": "patient",
+        "displayName": "患者",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "patient_id",
+      "status": "active"
+    },
+    {
+      "apiName": "provider_diagnoses",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Provider",
+        "apiName": "diagnoses",
+        "displayName": "诊断",
+        "pluralDisplayName": "诊断列表"
+      },
+      "target": {
+        "objectApiName": "Diagnosis",
+        "apiName": "provider",
+        "displayName": "医疗机构",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "provider_id",
+      "status": "active"
+    },
+    {
+      "apiName": "provider_encounters",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Provider",
+        "apiName": "encounters",
+        "displayName": "就诊记录",
+        "pluralDisplayName": "就诊记录列表"
+      },
+      "target": {
+        "objectApiName": "Encounter",
+        "apiName": "provider",
+        "displayName": "医疗机构",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "provider_id",
+      "status": "active"
+    },
+    {
+      "apiName": "user_orders",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "EcomUser",
+        "apiName": "orders",
+        "displayName": "订单",
+        "pluralDisplayName": "订单列表"
+      },
+      "target": {
+        "objectApiName": "EcomOrder",
+        "apiName": "user",
+        "displayName": "用户",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "user_id",
+      "status": "active"
+    },
+    {
+      "apiName": "merchant_products",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Merchant",
+        "apiName": "products",
+        "displayName": "商品",
+        "pluralDisplayName": "商品列表"
+      },
+      "target": {
+        "objectApiName": "EcomProduct",
+        "apiName": "merchant",
+        "displayName": "商家",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "merchant_id",
+      "status": "active"
+    },
+    {
+      "apiName": "product_orders",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "EcomProduct",
+        "apiName": "orders",
+        "displayName": "订单",
+        "pluralDisplayName": "订单列表"
+      },
+      "target": {
+        "objectApiName": "EcomOrder",
+        "apiName": "product",
+        "displayName": "商品",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "product_id",
+      "status": "active"
+    },
+    {
+      "apiName": "product_reviews",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "EcomProduct",
+        "apiName": "reviews",
+        "displayName": "评价",
+        "pluralDisplayName": "评价列表"
+      },
+      "target": {
+        "objectApiName": "Review",
+        "apiName": "product",
+        "displayName": "商品",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "product_id",
+      "status": "active"
+    },
+    {
+      "apiName": "user_reviews",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "EcomUser",
+        "apiName": "reviews",
+        "displayName": "评价",
+        "pluralDisplayName": "评价列表"
+      },
+      "target": {
+        "objectApiName": "Review",
+        "apiName": "user",
+        "displayName": "用户",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "user_id",
+      "status": "active"
+    }
+  ],
+  "interfaceTypes": [
+    {
+      "apiName": "Auditable",
+      "displayName": "可审计",
+      "description": "包含审计字段的接口，所有核心业务对象均实现此接口",
+      "properties": [
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp"
+        }
+      ],
+      "extendsInterfaces": [],
+      "status": "active"
+    },
+    {
+      "apiName": "GeoLocated",
+      "displayName": "地理定位",
+      "description": "包含地理位置信息的接口",
+      "properties": [
+        {
+          "apiName": "latitude",
+          "displayName": "纬度",
+          "type": "decimal"
+        },
+        {
+          "apiName": "longitude",
+          "displayName": "经度",
+          "type": "decimal"
+        },
+        {
+          "apiName": "address",
+          "displayName": "地址",
+          "type": "string"
+        }
+      ],
+      "extendsInterfaces": [],
+      "status": "active"
+    }
+  ],
+  "actionTypes": [
+    {
+      "apiName": "createPurchaseOrder",
+      "displayName": "创建采购单",
+      "description": "创建新的采购订单",
+      "parameters": [
+        {
+          "apiName": "supplier_id",
+          "displayName": "供应商ID",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "items",
+          "displayName": "采购明细",
+          "type": "string",
+          "description": "",
+          "required": true
+        }
+      ],
+      "targetObjectType": "PurchaseOrder",
+      "domain": "supply_chain",
+      "status": "active"
+    },
+    {
+      "apiName": "updateShipmentStatus",
+      "displayName": "更新发货状态",
+      "description": "更新发货单的物流状态",
+      "parameters": [
+        {
+          "apiName": "shipment_id",
+          "displayName": "发货单ID",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "status",
+          "displayName": "新状态",
+          "type": "string",
+          "description": "",
+          "required": true
+        }
+      ],
+      "targetObjectType": "Shipment",
+      "domain": "supply_chain",
+      "status": "active"
+    },
+    {
+      "apiName": "processTransaction",
+      "displayName": "处理交易",
+      "description": "发起一笔资金转账交易",
+      "parameters": [
+        {
+          "apiName": "from_account",
+          "displayName": "转出账户",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "to_account",
+          "displayName": "转入账户",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "amount",
+          "displayName": "金额",
+          "type": "decimal",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "type",
+          "displayName": "交易类型",
+          "type": "string",
+          "description": "",
+          "required": true
+        }
+      ],
+      "targetObjectType": "Transaction",
+      "domain": "finance",
+      "status": "active"
+    },
+    {
+      "apiName": "recordDiagnosis",
+      "displayName": "记录诊断",
+      "description": "为患者记录一条诊断信息",
+      "parameters": [
+        {
+          "apiName": "patient_id",
+          "displayName": "患者ID",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "provider_id",
+          "displayName": "机构ID",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "icd_code",
+          "displayName": "ICD编码",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "description",
+          "displayName": "诊断描述",
+          "type": "string",
+          "description": "",
+          "required": true
+        }
+      ],
+      "targetObjectType": "Diagnosis",
+      "domain": "healthcare",
+      "status": "active"
+    },
+    {
+      "apiName": "placeOrder",
+      "displayName": "下单",
+      "description": "用户下单购买商品",
+      "parameters": [
+        {
+          "apiName": "user_id",
+          "displayName": "用户ID",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "product_id",
+          "displayName": "商品ID",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "quantity",
+          "displayName": "数量",
+          "type": "integer",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "payment_method",
+          "displayName": "支付方式",
+          "type": "string",
+          "description": "",
+          "required": true
+        }
+      ],
+      "targetObjectType": "EcomOrder",
+      "domain": "ecommerce",
+      "status": "active"
+    },
+    {
+      "apiName": "submitReview",
+      "displayName": "提交评价",
+      "description": "用户对商品提交评价",
+      "parameters": [
+        {
+          "apiName": "user_id",
+          "displayName": "用户ID",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "product_id",
+          "displayName": "商品ID",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "rating",
+          "displayName": "评分",
+          "type": "integer",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "content",
+          "displayName": "评价内容",
+          "type": "string",
+          "description": "",
+          "required": true
+        }
+      ],
+      "targetObjectType": "Review",
+      "domain": "ecommerce",
+      "status": "active"
+    }
+  ]
+}

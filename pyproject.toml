@@ -1,0 +1,14 @@
+[project]
+name = "yunsheng-skills"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+otlg = "ontology_explorer.cli.__main__:main"
+
+[tool.uv]
+package = true
+
+[tool.setuptools.packages.find]
+include = ["ontology_explorer*"]
