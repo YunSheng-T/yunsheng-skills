@@ -1,12 +1,15 @@
 # -*- mode: python ; coding: utf-8 -*-
 # PyInstaller spec for otlg binary
 
-import os
+import sys
 from pathlib import Path
 
 # Project root is one level up from this spec file
 SPEC_DIR = Path(SPECPATH)
 PROJECT_DIR = SPEC_DIR.parent
+
+# On Windows, strip can corrupt DLLs; disable it
+is_windows = sys.platform == "win32"
 
 a = Analysis(
     [str(SPEC_DIR / 'otlg_entry.py')],
@@ -43,8 +46,8 @@ exe = EXE(
     name='otlg',
     debug=False,
     bootloader_ignore_signals=False,
-    strip=True,
-    upx=True,
+    strip=not is_windows,
+    upx=not is_windows,
     upx_exclude=[],
     runtime_tmpdir=None,
     console=True,
