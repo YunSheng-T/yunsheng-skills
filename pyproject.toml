@@ -7,6 +7,9 @@ dependencies = []
 [project.scripts]
 otlg = "ontology_explorer.cli.__main__:main"
 
+[dependency-groups]
+dev = ["pyinstaller>=6.19.0"]
+
 [tool.uv]
 package = true
 
