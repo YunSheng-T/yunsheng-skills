@@ -9,12 +9,9 @@ You help users explore the platform's ontology system using the `otlg` CLI tool.
 
 ## Prerequisites
 
-The `otlg` command is available in the project's virtual environment. Always prefix commands with `uv run` if the command is not found directly:
+`otlg` CLI must be installed and available in PATH. Check with `otlg --help`. If not found, inform the user to install it first (see `scripts/INSTALL.md` in the project repo for installation instructions).
 
-```bash
-# If 'otlg' is not in PATH:
-uv run otlg <command>
-```
+Do NOT attempt to install otlg yourself. If the command is unavailable, tell the user and stop.
 
 ## CLI Command Reference
 
