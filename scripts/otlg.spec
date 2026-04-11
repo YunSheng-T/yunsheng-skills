@@ -15,7 +15,16 @@ a = Analysis(
     datas=[
         (str(PROJECT_DIR / 'ontology_explorer' / 'data'), 'ontology_explorer/data'),
     ],
-    hiddenimports=[],
+    hiddenimports=[
+        'ontology_explorer',
+        'ontology_explorer.core',
+        'ontology_explorer.core.models',
+        'ontology_explorer.core.store',
+        'ontology_explorer.core.query',
+        'ontology_explorer.cli',
+        'ontology_explorer.cli.__main__',
+        'ontology_explorer.cli.commands',
+    ],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

@@ -26,7 +26,7 @@ jobs:
         run: uv sync --group dev
 
       - name: Build binary
-        run: uv run pyinstaller --clean --noconfirm --name otlg --onefile scripts/otlg_entry.py --add-data "ontology_explorer/data:ontology_explorer/data"
+        run: uv run pyinstaller --clean --noconfirm scripts/otlg.spec
 
       - name: Rename artifact
         shell: bash
