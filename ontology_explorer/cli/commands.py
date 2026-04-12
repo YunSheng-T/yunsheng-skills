@@ -96,7 +96,7 @@ def cmd_instance(args: Any) -> None:
 
 def cmd_search(args: Any) -> None:
     q = _get_query(args)
-    results = q.search(args.type_api_name, args.query)
+    results = q.search(args.type_api_name, args.query, limit=args.limit)
     _output(results)
 
 

@@ -17,7 +17,7 @@
 |---------|-------------|---------|
 | `otlg instances <type>` | List instances of an object type | `otlg instances Supplier --limit 10` |
 | `otlg instance <type> <pk>` | Get a single instance by primary key | `otlg instance Supplier SUP001` |
-| `otlg search <type> <query>` | Full-text search within indexed properties | `otlg search Patient "张伟"` |
+| `otlg search <type> <query>` | Full-text search within indexed properties | `otlg search Patient "张伟" --limit 5` |
 | `otlg aggregate <type> <field> --func <fn>` | Aggregate: count/sum/avg/min/max | `otlg aggregate Transaction amount --func sum` |
 | `otlg links-of <type> <pk>` | Show linked objects for an instance | `otlg links-of Supplier SUP001` |
 
@@ -77,6 +77,6 @@ otlg aggregate ScProduct unit_price --func avg
 
 ### "Find instances matching a keyword"
 ```bash
-otlg search Patient "糖尿病"
-otlg search EcomProduct "蓝牙"
+otlg search Patient "糖尿病" --limit 5
+otlg search EcomProduct "蓝牙" --limit 10
 ```

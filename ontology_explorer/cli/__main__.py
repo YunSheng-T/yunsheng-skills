@@ -85,6 +85,7 @@ def _build_parser() -> argparse.ArgumentParser:
     p_search = subparsers.add_parser("search", help="Search instances by text query")
     p_search.add_argument("type_api_name", help="Object type API name")
     p_search.add_argument("query", help="Search query")
+    p_search.add_argument("--limit", type=int, default=50, help="Max results (default: 50)")
     p_search.set_defaults(func=commands.cmd_search)
 
     # ── aggregate ────────────────────────────────────────────────────

@@ -1,8 +1,11 @@
-"""Query engine for ontology metadata and instance data."""
+"""Query engine for ontology metadata and instance data.
+
+Acts as a thin proxy: metadata queries build from the loaded ontology,
+instance queries delegate to the store backend (JSON in-memory or REST server-side).
+"""
 
 from __future__ import annotations
 
-import statistics
 from typing import Any
 
 from .models import LinkType, ObjectType, OntologyDefinition
@@ -15,7 +18,6 @@ class OntologyQuery:
     def __init__(self, store: OntologyStore | None = None) -> None:
         self._store = store or JsonOntologyStore()
         self._ontology: OntologyDefinition | None = None
-        self._instances: dict[str, list[dict[str, Any]]] | None = None
 
     @property
     def ontology(self) -> OntologyDefinition:
@@ -23,16 +25,10 @@ class OntologyQuery:
             self._ontology = self._store.load_ontology()
         return self._ontology
 
-    @property
-    def instances(self) -> dict[str, list[dict[str, Any]]]:
-        if self._instances is None:
-            self._instances = self._store.load_all_instances()
-        return self._instances
-
     def reload(self) -> None:
-        """Force reload from disk."""
+        """Force reload from store."""
         self._ontology = None
-        self._instances = None
+        self._store.reload()
 
     # ── Metadata queries ─────────────────────────────────────────────
 
@@ -57,9 +53,13 @@ class OntologyQuery:
         for t in self.ontology.object_types:
             if t.api_name == api_name:
                 result = t.to_dict()
-                # Enrich with link information
                 result["links"] = self._get_links_for_type(api_name)
-                result["instanceCount"] = len(self.instances.get(api_name, []))
+                # Delegate instance count to store (cheap for JSON with PK index)
+                try:
+                    probe = self._store.query_instances(api_name, limit=1)
+                    result["instanceCount"] = probe.get("total", 0)
+                except Exception:
+                    result["instanceCount"] = 0
                 return result
         return None
 
@@ -110,7 +110,7 @@ class OntologyQuery:
                 domains[t.domain] = t.domain.replace("_", " ").title()
         return [{"apiName": k, "displayName": v} for k, v in domains.items()]
 
-    # ── Instance queries ─────────────────────────────────────────────
+    # ── Instance queries (delegated to store) ─────────────────────────
 
     def query_instances(
         self,
@@ -119,107 +119,25 @@ class OntologyQuery:
         limit: int = 50,
         offset: int = 0,
     ) -> dict[str, Any]:
-        data = self.instances.get(type_api_name, [])
-
-        # Apply filters
-        if filters:
-            filtered = []
-            for inst in data:
-                match = True
-                for key, value in filters.items():
-                    inst_val = inst.get(key)
-                    if isinstance(value, str) and isinstance(inst_val, str):
-                        if value.lower() not in inst_val.lower():
-                            match = False
-                            break
-                    elif inst_val != value:
-                        match = False
-                        break
-                if match:
-                    filtered.append(inst)
-            data = filtered
-
-        total = len(data)
-        page = data[offset : offset + limit]
-        return {
-            "typeApiName": type_api_name,
-            "total": total,
-            "limit": limit,
-            "offset": offset,
-            "instances": page,
-        }
+        return self._store.query_instances(
+            type_api_name, filters=filters, limit=limit, offset=offset
+        )
 
     def get_instance(self, type_api_name: str, primary_key: str) -> dict[str, Any] | None:
-        type_def = self._find_object_type(type_api_name)
-        if not type_def:
-            return None
+        return self._store.get_instance(type_api_name, primary_key)
 
-        pk_field = type_def.primary_key_property_api_name
-        for inst in self.instances.get(type_api_name, []):
-            if str(inst.get(pk_field)) == str(primary_key):
-                return inst
-        return None
-
-    def search(self, type_api_name: str, query: str) -> list[dict[str, Any]]:
-        type_def = self._find_object_type(type_api_name)
-        if not type_def:
-            return []
-
-        # Search across indexed (string) properties
-        searchable_fields = [
-            p.api_name for p in type_def.properties
-            if p.indexed_for_search and p.type == "string"
-        ]
-        # Fallback: search all string properties if none are indexed
-        if not searchable_fields:
-            searchable_fields = [
-                p.api_name for p in type_def.properties if p.type == "string"
-            ]
-
-        q = query.lower()
-        results = []
-        for inst in self.instances.get(type_api_name, []):
-            for field_name in searchable_fields:
-                val = inst.get(field_name)
-                if isinstance(val, str) and q in val.lower():
-                    results.append(inst)
-                    break
-        return results
+    def search(self, type_api_name: str, query: str, limit: int = 50) -> list[dict[str, Any]]:
+        return self._store.search_instances(type_api_name, query, limit=limit)
 
     def aggregate(
         self, type_api_name: str, field: str, func: str
     ) -> dict[str, Any]:
-        data = self.instances.get(type_api_name, [])
-        values = [inst.get(field) for inst in data if inst.get(field) is not None]
-        numeric_values = [v for v in values if isinstance(v, (int, float))]
-
-        result: dict[str, Any] = {
-            "typeApiName": type_api_name,
-            "field": field,
-            "function": func,
-            "totalInstances": len(data),
-            "nonNullValues": len(values),
-        }
-
-        if func == "count":
-            result["value"] = len(values)
-        elif func == "sum":
-            result["value"] = sum(numeric_values) if numeric_values else 0
-        elif func == "avg":
-            result["value"] = statistics.mean(numeric_values) if numeric_values else 0
-        elif func == "min":
-            result["value"] = min(numeric_values) if numeric_values else None
-        elif func == "max":
-            result["value"] = max(numeric_values) if numeric_values else None
-        else:
-            result["value"] = None
-            result["error"] = f"Unknown function: {func}"
-
-        return result
+        return self._store.aggregate(type_api_name, field, func)
 
     def follow_link(
         self, type_api_name: str, primary_key: str, link_api_name: str
     ) -> list[dict[str, Any]]:
+        """Traverse a link from an instance to related instances."""
         inst = self.get_instance(type_api_name, primary_key)
         if not inst:
             return []
@@ -228,38 +146,54 @@ class OntologyQuery:
         if not link_def:
             return []
 
-        # Determine traversal direction
+        fk_field = link_def.foreign_key_property
+
         if link_def.source.object_api_name == type_api_name:
+            # We are at the source side of the link
             target_type = link_def.target.object_api_name
-            fk_field = link_def.foreign_key_property
+
             if fk_field and fk_field in inst:
-                # Source side: look up target by FK value in source instance
+                # FK is on the source instance (e.g. source has target_id)
                 fk_value = inst[fk_field]
-                target_type_def = self._find_object_type(target_type)
-                if target_type_def:
-                    target_pk = target_type_def.primary_key_property_api_name
-                    return [
-                        t for t in self.instances.get(target_type, [])
-                        if t.get(target_pk) == fk_value
-                    ]
-            # Reverse: target has FK pointing to source
-            source_pk_field = self._find_object_type(type_api_name)
-            if source_pk_field:
-                source_pk = source_pk_field.primary_key_property_api_name
+                target_inst = self._store.get_instance(target_type, str(fk_value))
+                if target_inst:
+                    return [target_inst]
+                return []
+
+            # FK is on the target side (target has source_id)
+            # Find all target instances whose FK matches our PK
+            source_type_def = self._find_object_type(type_api_name)
+            if source_type_def and fk_field:
+                source_pk = source_type_def.primary_key_property_api_name
                 source_pk_val = inst.get(source_pk)
-                return [
-                    t for t in self.instances.get(target_type, [])
-                    if t.get(fk_field) == source_pk_val
-                ]
+                if source_pk_val is not None:
+                    result = self._store.query_instances(
+                        target_type, filters={fk_field: str(source_pk_val)}, limit=500
+                    )
+                    return result.get("instances", [])
 
         elif link_def.target.object_api_name == type_api_name:
+            # We are at the target side of the link
             source_type = link_def.source.object_api_name
-            fk_field = link_def.foreign_key_property
-            pk_val = inst.get(self._find_object_type(type_api_name).primary_key_property_api_name)
-            return [
-                s for s in self.instances.get(source_type, [])
-                if s.get(fk_field) == pk_val
-            ]
+
+            if fk_field and fk_field in inst:
+                # FK is on our instance — look up source by PK
+                fk_value = inst[fk_field]
+                source_inst = self._store.get_instance(source_type, str(fk_value))
+                if source_inst:
+                    return [source_inst]
+                return []
+
+            # FK is on the source side (reverse lookup)
+            target_type_def = self._find_object_type(type_api_name)
+            if target_type_def and fk_field:
+                target_pk = target_type_def.primary_key_property_api_name
+                target_pk_val = inst.get(target_pk)
+                if target_pk_val is not None:
+                    result = self._store.query_instances(
+                        source_type, filters={fk_field: str(target_pk_val)}, limit=500
+                    )
+                    return result.get("instances", [])
 
         return []
 
