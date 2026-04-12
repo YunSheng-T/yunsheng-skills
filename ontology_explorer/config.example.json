@@ -1,0 +1,5 @@
+{
+  "backend": "rest",
+  "api_url": "https://ontology-platform.example.com/api/v1",
+  "api_key": "your-api-key-here"
+}
