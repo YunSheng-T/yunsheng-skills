@@ -7,7 +7,12 @@ import sys
 from typing import Any
 
 from ..core.query import OntologyQuery
-from ..core.store import OntologyStore
+
+
+def _get_query(args: Any) -> OntologyQuery:
+    """Create OntologyQuery using the store resolved by __main__.py."""
+    store = getattr(args, "_store", None)
+    return OntologyQuery(store=store)
 
 
 def _output(data: Any) -> None:
@@ -30,13 +35,13 @@ def _parse_filters(raw: list[str] | None) -> dict[str, str] | None:
 
 
 def cmd_types(args: Any) -> None:
-    q = OntologyQuery()
+    q = _get_query(args)
     result = q.list_object_types(domain=args.domain)
     _output(result)
 
 
 def cmd_type(args: Any) -> None:
-    q = OntologyQuery()
+    q = _get_query(args)
     result = q.get_object_type(args.api_name)
     if result is None:
         print(f"Error: object type '{args.api_name}' not found", file=sys.stderr)
@@ -45,31 +50,31 @@ def cmd_type(args: Any) -> None:
 
 
 def cmd_links(args: Any) -> None:
-    q = OntologyQuery()
+    q = _get_query(args)
     result = q.list_link_types(source_type=args.source)
     _output(result)
 
 
 def cmd_interfaces(args: Any) -> None:
-    q = OntologyQuery()
+    q = _get_query(args)
     result = q.list_interface_types()
     _output(result)
 
 
 def cmd_actions(args: Any) -> None:
-    q = OntologyQuery()
+    q = _get_query(args)
     result = q.list_action_types(domain=args.domain)
     _output(result)
 
 
 def cmd_domains(args: Any) -> None:
-    q = OntologyQuery()
+    q = _get_query(args)
     result = q.list_domains()
     _output(result)
 
 
 def cmd_instances(args: Any) -> None:
-    q = OntologyQuery()
+    q = _get_query(args)
     filters = _parse_filters(args.filter)
     result = q.query_instances(
         args.type_api_name,
@@ -81,7 +86,7 @@ def cmd_instances(args: Any) -> None:
 
 
 def cmd_instance(args: Any) -> None:
-    q = OntologyQuery()
+    q = _get_query(args)
     result = q.get_instance(args.type_api_name, args.primary_key)
     if result is None:
         print(f"Error: instance '{args.primary_key}' of type '{args.type_api_name}' not found", file=sys.stderr)
@@ -90,19 +95,19 @@ def cmd_instance(args: Any) -> None:
 
 
 def cmd_search(args: Any) -> None:
-    q = OntologyQuery()
+    q = _get_query(args)
     results = q.search(args.type_api_name, args.query)
     _output(results)
 
 
 def cmd_aggregate(args: Any) -> None:
-    q = OntologyQuery()
+    q = _get_query(args)
     result = q.aggregate(args.type_api_name, args.field, args.agg_func)
     _output(result)
 
 
 def cmd_links_of(args: Any) -> None:
-    q = OntologyQuery()
+    q = _get_query(args)
     type_def = q.get_object_type(args.type_api_name)
     if type_def is None:
         print(f"Error: object type '{args.type_api_name}' not found", file=sys.stderr)
@@ -126,6 +131,6 @@ def cmd_links_of(args: Any) -> None:
                 "targetType": link["relatedObject"],
                 "displayName": link["relatedDisplayName"],
                 "count": len(related),
-                "instances": related[:10],  # Limit to first 10
+                "instances": related[:10],
             }
     _output(result)

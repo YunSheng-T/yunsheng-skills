@@ -1,20 +1,48 @@
-"""JSON file-based storage layer for ontology data."""
+"""Pluggable storage layer for ontology data.
+
+Provides an abstract base class (OntologyStore) and concrete implementations:
+- JsonOntologyStore: reads from local JSON files
+- RestOntologyStore: reads from a REST API (in rest_store.py)
+"""
 
 from __future__ import annotations
 
 import json
+from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Any
 
 from .models import OntologyDefinition
 
 
+# ── Abstract base ───────────────────────────────────────────────────────────
+
+class OntologyStore(ABC):
+    """Abstract interface for ontology data storage."""
+
+    @abstractmethod
+    def load_ontology(self) -> OntologyDefinition:
+        """Load the full ontology definition."""
+        ...
+
+    @abstractmethod
+    def load_all_instances(self) -> dict[str, list[dict[str, Any]]]:
+        """Load all instance data, keyed by object type apiName."""
+        ...
+
+    def reload(self) -> None:
+        """Clear any caches. Subclasses can override for custom cache behavior."""
+        pass
+
+
+# ── JSON file backend ───────────────────────────────────────────────────────
+
 # Resolve data directory relative to the package root
 _PACKAGE_DIR = Path(__file__).resolve().parent.parent
 _DATA_DIR = _PACKAGE_DIR / "data"
 
 
-class OntologyStore:
+class JsonOntologyStore(OntologyStore):
     """Read/write ontology definitions and instance data from JSON files."""
 
     def __init__(self, data_dir: Path | None = None) -> None:
@@ -23,8 +51,6 @@ class OntologyStore:
     @property
     def data_dir(self) -> Path:
         return self._data_dir
-
-    # ── Ontology definition ──────────────────────────────────────────
 
     def load_ontology(self) -> OntologyDefinition:
         path = self._data_dir / "ontology.json"
@@ -38,11 +64,6 @@ class OntologyStore:
         with open(path, "w", encoding="utf-8") as f:
             json.dump(ontology.to_dict(), f, ensure_ascii=False, indent=2)
 
-    # ── Instance data ────────────────────────────────────────────────
-
-    def _instance_file(self, domain: str) -> Path:
-        return self._data_dir / "instances" / f"{domain}.json"
-
     def load_instances(self, domain: str) -> dict[str, list[dict[str, Any]]]:
         """Load instances for a domain. Returns {type_api_name: [instances]}."""
         path = self._instance_file(domain)
@@ -52,7 +73,6 @@ class OntologyStore:
             return json.load(f)
 
     def load_all_instances(self) -> dict[str, list[dict[str, Any]]]:
-        """Load all instance data across all domains, merged into one dict."""
         instances_dir = self._data_dir / "instances"
         if not instances_dir.exists():
             return {}
@@ -68,3 +88,6 @@ class OntologyStore:
         path.parent.mkdir(parents=True, exist_ok=True)
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
+
+    def _instance_file(self, domain: str) -> Path:
+        return self._data_dir / "instances" / f"{domain}.json"

@@ -48,6 +48,46 @@
           "array": false
         },
         {
+          "apiName": "contact_phone",
+          "displayName": "联系电话",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "address",
+          "displayName": "地址",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "business_scope",
+          "displayName": "经营范围",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "registered_capital",
+          "displayName": "注册资本(万元)",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "status",
+          "displayName": "状态",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
           "apiName": "created_at",
           "displayName": "创建时间",
           "type": "timestamp",
@@ -118,6 +158,46 @@
           "apiName": "supplier_id",
           "displayName": "供应商ID",
           "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "brand",
+          "displayName": "品牌",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "model",
+          "displayName": "型号",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "origin",
+          "displayName": "产地",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "min_order_qty",
+          "displayName": "最小订购量",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "lead_time_days",
+          "displayName": "交期(天)",
+          "type": "integer",
           "description": "",
           "indexedForSearch": false,
           "array": false
@@ -206,6 +286,38 @@
           "array": false
         },
         {
+          "apiName": "warehouse_type",
+          "displayName": "仓库类型",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "manager",
+          "displayName": "负责人",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "phone",
+          "displayName": "联系电话",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "utilization_rate",
+          "displayName": "利用率",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
           "apiName": "created_at",
           "displayName": "创建时间",
           "type": "timestamp",
@@ -260,6 +372,46 @@
         {
           "apiName": "status",
           "displayName": "状态",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "currency",
+          "displayName": "币种",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "priority",
+          "displayName": "优先级",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "payment_terms",
+          "displayName": "付款条件",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "expected_delivery",
+          "displayName": "预计交付日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "remark",
+          "displayName": "备注",
           "type": "string",
           "description": "",
           "indexedForSearch": false,
@@ -333,6 +485,38 @@
           "array": false
         },
         {
+          "apiName": "carrier",
+          "displayName": "承运人",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "weight",
+          "displayName": "重量(kg)",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "shipping_method",
+          "displayName": "运输方式",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "estimated_arrival",
+          "displayName": "预计到达",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
           "apiName": "created_at",
           "displayName": "创建时间",
           "type": "timestamp",
@@ -345,6 +529,196 @@
       "icon": {
         "locator": "truck",
         "color": "#9B51E0"
+      },
+      "status": "active",
+      "domain": "supply_chain",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "Contract",
+      "displayName": "合同",
+      "pluralDisplayName": "合同列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "title",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "合同ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "supplier_id",
+          "displayName": "供应商ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "contract_no",
+          "displayName": "合同编号",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "title",
+          "displayName": "合同名称",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "value",
+          "displayName": "合同金额",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "currency",
+          "displayName": "币种",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "start_date",
+          "displayName": "生效日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "end_date",
+          "displayName": "到期日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "status",
+          "displayName": "状态",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "signed_at",
+          "displayName": "签订日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "供应商合同",
+      "icon": {
+        "locator": "document",
+        "color": "#6C5CE7"
+      },
+      "status": "active",
+      "domain": "supply_chain",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "Inventory",
+      "displayName": "库存",
+      "pluralDisplayName": "库存列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "id",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "库存ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "product_id",
+          "displayName": "产品ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "warehouse_id",
+          "displayName": "仓库ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "quantity",
+          "displayName": "总数量",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "reserved_qty",
+          "displayName": "已预留",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "available_qty",
+          "displayName": "可用数量",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "last_checked",
+          "displayName": "最后盘点",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "产品库存记录",
+      "icon": {
+        "locator": "layers",
+        "color": "#00B894"
       },
       "status": "active",
       "domain": "supply_chain",
@@ -395,6 +769,38 @@
           "apiName": "kyc_status",
           "displayName": "KYC状态",
           "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "phone",
+          "displayName": "联系电话",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "occupation",
+          "displayName": "职业",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "annual_income",
+          "displayName": "年收入(万)",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "vip_since",
+          "displayName": "VIP起始年",
+          "type": "integer",
           "description": "",
           "indexedForSearch": false,
           "array": false
@@ -461,6 +867,22 @@
         {
           "apiName": "currency",
           "displayName": "币种",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "branch",
+          "displayName": "开户行",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "status",
+          "displayName": "状态",
           "type": "string",
           "description": "",
           "indexedForSearch": false,
@@ -542,6 +964,30 @@
           "array": false
         },
         {
+          "apiName": "status",
+          "displayName": "状态",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "channel",
+          "displayName": "渠道",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "description",
+          "displayName": "描述",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
           "apiName": "timestamp",
           "displayName": "交易时间",
           "type": "timestamp",
@@ -609,6 +1055,30 @@
           "array": false
         },
         {
+          "apiName": "risk_level",
+          "displayName": "风险等级",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "term_days",
+          "displayName": "期限(天)",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "issuer",
+          "displayName": "发行方",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
           "apiName": "created_at",
           "displayName": "创建时间",
           "type": "timestamp",
@@ -621,6 +1091,228 @@
       "icon": {
         "locator": "layers",
         "color": "#9B51E0"
+      },
+      "status": "active",
+      "domain": "finance",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "CreditCard",
+      "displayName": "信用卡",
+      "pluralDisplayName": "信用卡列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "id",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "卡ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "customer_id",
+          "displayName": "客户ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "card_number",
+          "displayName": "卡号(脱敏)",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "card_type",
+          "displayName": "卡类型",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "credit_limit",
+          "displayName": "信用额度",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "used_amount",
+          "displayName": "已用额度",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "available_amount",
+          "displayName": "可用额度",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "billing_day",
+          "displayName": "账单日",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "status",
+          "displayName": "状态",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "信用卡信息",
+      "icon": {
+        "locator": "credit-card",
+        "color": "#E17055"
+      },
+      "status": "active",
+      "domain": "finance",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "Loan",
+      "displayName": "贷款",
+      "pluralDisplayName": "贷款列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "id",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "贷款ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "customer_id",
+          "displayName": "客户ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "account_id",
+          "displayName": "关联账户",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "loan_type",
+          "displayName": "贷款类型",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "principal",
+          "displayName": "本金",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "interest_rate",
+          "displayName": "利率",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "term_months",
+          "displayName": "期限(月)",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "monthly_payment",
+          "displayName": "月供",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "remaining_principal",
+          "displayName": "剩余本金",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "status",
+          "displayName": "状态",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "applied_at",
+          "displayName": "申请日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "approved_at",
+          "displayName": "批准日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "贷款记录",
+      "icon": {
+        "locator": "money",
+        "color": "#D63031"
       },
       "status": "active",
       "domain": "finance",
@@ -660,6 +1352,14 @@
           "array": false
         },
         {
+          "apiName": "gender",
+          "displayName": "性别",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
           "apiName": "blood_type",
           "displayName": "血型",
           "type": "string",
@@ -670,6 +1370,30 @@
         {
           "apiName": "insurance_id",
           "displayName": "保险ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "phone",
+          "displayName": "联系电话",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "emergency_contact",
+          "displayName": "紧急联系人",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "allergies",
+          "displayName": "过敏史",
           "type": "string",
           "description": "",
           "indexedForSearch": false,
@@ -767,6 +1491,30 @@
           "array": false
         },
         {
+          "apiName": "bed_count",
+          "displayName": "床位数",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "doctor_count",
+          "displayName": "医生数",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "phone",
+          "displayName": "联系电话",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
           "apiName": "created_at",
           "displayName": "创建时间",
           "type": "timestamp",
@@ -835,8 +1583,32 @@
           "array": false
         },
         {
+          "apiName": "severity",
+          "displayName": "严重程度",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "doctor_name",
+          "displayName": "主治医生",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
           "apiName": "date",
           "displayName": "诊断日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "follow_up_date",
+          "displayName": "复诊日期",
           "type": "date",
           "description": "",
           "indexedForSearch": false,
@@ -904,6 +1676,38 @@
         {
           "apiName": "ndc_code",
           "displayName": "NDC编码",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "specification",
+          "displayName": "规格",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "unit_price",
+          "displayName": "单价",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "insurance_covered",
+          "displayName": "医保覆盖",
+          "type": "boolean",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "side_effects",
+          "displayName": "副作用",
           "type": "string",
           "description": "",
           "indexedForSearch": false,
@@ -985,6 +1789,30 @@
           "array": false
         },
         {
+          "apiName": "doctor_name",
+          "displayName": "主治医生",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "cost",
+          "displayName": "费用",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "follow_up_required",
+          "displayName": "需复诊",
+          "type": "boolean",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
           "apiName": "created_at",
           "displayName": "创建时间",
           "type": "timestamp",
@@ -997,6 +1825,220 @@
       "icon": {
         "locator": "pulse",
         "color": "#9B51E0"
+      },
+      "status": "active",
+      "domain": "healthcare",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "LabResult",
+      "displayName": "检验结果",
+      "pluralDisplayName": "检验结果列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "test_name",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "检验ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "patient_id",
+          "displayName": "患者ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "encounter_id",
+          "displayName": "就诊ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "test_name",
+          "displayName": "检验项目",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "result_value",
+          "displayName": "结果值",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "unit",
+          "displayName": "单位",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "reference_range",
+          "displayName": "参考范围",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "status",
+          "displayName": "状态",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "collected_at",
+          "displayName": "采样时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "reported_at",
+          "displayName": "报告时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "检验化验结果",
+      "icon": {
+        "locator": "clipboard",
+        "color": "#00CEC9"
+      },
+      "status": "active",
+      "domain": "healthcare",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "InsuranceClaim",
+      "displayName": "医保理赔",
+      "pluralDisplayName": "医保理赔列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "claim_no",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "理赔ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "patient_id",
+          "displayName": "患者ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "encounter_id",
+          "displayName": "就诊ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "claim_no",
+          "displayName": "理赔编号",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "total_amount",
+          "displayName": "总费用",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "approved_amount",
+          "displayName": "批准金额",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "self_pay_amount",
+          "displayName": "自费金额",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "status",
+          "displayName": "状态",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "submitted_at",
+          "displayName": "提交日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "processed_at",
+          "displayName": "处理日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "医保理赔记录",
+      "icon": {
+        "locator": "shield",
+        "color": "#FDCB6E"
       },
       "status": "active",
       "domain": "healthcare",
@@ -1036,9 +2078,49 @@
           "array": false
         },
         {
+          "apiName": "phone",
+          "displayName": "手机号",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "gender",
+          "displayName": "性别",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "age",
+          "displayName": "年龄",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "city",
+          "displayName": "城市",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
           "apiName": "tier",
           "displayName": "会员等级",
           "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "total_spent",
+          "displayName": "累计消费",
+          "type": "decimal",
           "description": "",
           "indexedForSearch": false,
           "array": false
@@ -1143,6 +2225,38 @@
           "array": false
         },
         {
+          "apiName": "phone",
+          "displayName": "联系电话",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "employee_count",
+          "displayName": "员工数",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "monthly_sales",
+          "displayName": "月销量",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "return_rate",
+          "displayName": "退货率",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
           "apiName": "created_at",
           "displayName": "创建时间",
           "type": "timestamp",
@@ -1214,6 +2328,30 @@
           "apiName": "stock",
           "displayName": "库存",
           "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "brand",
+          "displayName": "品牌",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "sales_count",
+          "displayName": "销量",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "rating",
+          "displayName": "评分",
+          "type": "decimal",
           "description": "",
           "indexedForSearch": false,
           "array": false
@@ -1302,6 +2440,30 @@
           "array": false
         },
         {
+          "apiName": "shipping_address",
+          "displayName": "收货地址",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "coupon_amount",
+          "displayName": "优惠金额",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "remark",
+          "displayName": "备注",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
           "apiName": "created_at",
           "displayName": "下单时间",
           "type": "timestamp",
@@ -1369,6 +2531,30 @@
           "array": false
         },
         {
+          "apiName": "images",
+          "displayName": "有图",
+          "type": "boolean",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "helpful_count",
+          "displayName": "有帮助数",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "merchant_reply",
+          "displayName": "商家回复",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
           "apiName": "created_at",
           "displayName": "评价时间",
           "type": "timestamp",
@@ -1381,6 +2567,121 @@
       "icon": {
         "locator": "comment",
         "color": "#9B51E0"
+      },
+      "status": "active",
+      "domain": "ecommerce",
+      "implementsInterfaces": [
+        "Auditable"
+      ]
+    },
+    {
+      "apiName": "Coupon",
+      "displayName": "优惠券",
+      "pluralDisplayName": "优惠券列表",
+      "primaryKeyPropertyApiName": "id",
+      "titlePropertyApiName": "code",
+      "properties": [
+        {
+          "apiName": "id",
+          "displayName": "券ID",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "code",
+          "displayName": "券码",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": true,
+          "array": false
+        },
+        {
+          "apiName": "type",
+          "displayName": "类型",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "discount_value",
+          "displayName": "折扣值",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "min_order_amount",
+          "displayName": "最低消费",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "max_discount",
+          "displayName": "最大折扣",
+          "type": "decimal",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "valid_from",
+          "displayName": "生效日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "valid_to",
+          "displayName": "到期日期",
+          "type": "date",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "usage_limit",
+          "displayName": "使用次数限制",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "used_count",
+          "displayName": "已使用次数",
+          "type": "integer",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "status",
+          "displayName": "状态",
+          "type": "string",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        },
+        {
+          "apiName": "created_at",
+          "displayName": "创建时间",
+          "type": "timestamp",
+          "description": "",
+          "indexedForSearch": false,
+          "array": false
+        }
+      ],
+      "description": "优惠券",
+      "icon": {
+        "locator": "ticket",
+        "color": "#E84393"
       },
       "status": "active",
       "domain": "ecommerce",
@@ -1463,6 +2764,60 @@
       "status": "active"
     },
     {
+      "apiName": "supplier_contracts",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Supplier",
+        "apiName": "contracts",
+        "displayName": "合同",
+        "pluralDisplayName": "合同列表"
+      },
+      "target": {
+        "objectApiName": "Contract",
+        "apiName": "supplier",
+        "displayName": "供应商",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "supplier_id",
+      "status": "active"
+    },
+    {
+      "apiName": "product_inventory",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "ScProduct",
+        "apiName": "inventory_records",
+        "displayName": "库存记录",
+        "pluralDisplayName": "库存记录列表"
+      },
+      "target": {
+        "objectApiName": "Inventory",
+        "apiName": "product",
+        "displayName": "产品",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "product_id",
+      "status": "active"
+    },
+    {
+      "apiName": "warehouse_inventory",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Warehouse",
+        "apiName": "inventory_records",
+        "displayName": "库存记录",
+        "pluralDisplayName": "库存记录列表"
+      },
+      "target": {
+        "objectApiName": "Inventory",
+        "apiName": "warehouse",
+        "displayName": "仓库",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "warehouse_id",
+      "status": "active"
+    },
+    {
       "apiName": "customer_accounts",
       "cardinality": "OneToMany",
       "source": {
@@ -1514,6 +2869,60 @@
         "pluralDisplayName": ""
       },
       "foreignKeyProperty": "to_account",
+      "status": "active"
+    },
+    {
+      "apiName": "customer_credit_cards",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "FiCustomer",
+        "apiName": "credit_cards",
+        "displayName": "信用卡",
+        "pluralDisplayName": "信用卡列表"
+      },
+      "target": {
+        "objectApiName": "CreditCard",
+        "apiName": "customer",
+        "displayName": "客户",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "customer_id",
+      "status": "active"
+    },
+    {
+      "apiName": "customer_loans",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "FiCustomer",
+        "apiName": "loans",
+        "displayName": "贷款",
+        "pluralDisplayName": "贷款列表"
+      },
+      "target": {
+        "objectApiName": "Loan",
+        "apiName": "customer",
+        "displayName": "客户",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "customer_id",
+      "status": "active"
+    },
+    {
+      "apiName": "account_loans",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Account",
+        "apiName": "loans",
+        "displayName": "贷款",
+        "pluralDisplayName": "贷款列表"
+      },
+      "target": {
+        "objectApiName": "Loan",
+        "apiName": "account",
+        "displayName": "账户",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "account_id",
       "status": "active"
     },
     {
@@ -1586,6 +2995,78 @@
         "pluralDisplayName": ""
       },
       "foreignKeyProperty": "provider_id",
+      "status": "active"
+    },
+    {
+      "apiName": "patient_lab_results",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Patient",
+        "apiName": "lab_results",
+        "displayName": "检验结果",
+        "pluralDisplayName": "检验结果列表"
+      },
+      "target": {
+        "objectApiName": "LabResult",
+        "apiName": "patient",
+        "displayName": "患者",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "patient_id",
+      "status": "active"
+    },
+    {
+      "apiName": "encounter_lab_results",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Encounter",
+        "apiName": "lab_results",
+        "displayName": "检验结果",
+        "pluralDisplayName": "检验结果列表"
+      },
+      "target": {
+        "objectApiName": "LabResult",
+        "apiName": "encounter",
+        "displayName": "就诊记录",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "encounter_id",
+      "status": "active"
+    },
+    {
+      "apiName": "patient_claims",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Patient",
+        "apiName": "claims",
+        "displayName": "理赔记录",
+        "pluralDisplayName": "理赔记录列表"
+      },
+      "target": {
+        "objectApiName": "InsuranceClaim",
+        "apiName": "patient",
+        "displayName": "患者",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "patient_id",
+      "status": "active"
+    },
+    {
+      "apiName": "encounter_claims",
+      "cardinality": "OneToMany",
+      "source": {
+        "objectApiName": "Encounter",
+        "apiName": "claims",
+        "displayName": "理赔记录",
+        "pluralDisplayName": "理赔记录列表"
+      },
+      "target": {
+        "objectApiName": "InsuranceClaim",
+        "apiName": "encounter",
+        "displayName": "就诊记录",
+        "pluralDisplayName": ""
+      },
+      "foreignKeyProperty": "encounter_id",
       "status": "active"
     },
     {
@@ -1769,6 +3250,37 @@
       "status": "active"
     },
     {
+      "apiName": "createContract",
+      "displayName": "创建合同",
+      "description": "与供应商创建新合同",
+      "parameters": [
+        {
+          "apiName": "supplier_id",
+          "displayName": "供应商ID",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "title",
+          "displayName": "合同名称",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "value",
+          "displayName": "合同金额",
+          "type": "decimal",
+          "description": "",
+          "required": true
+        }
+      ],
+      "targetObjectType": "Contract",
+      "domain": "supply_chain",
+      "status": "active"
+    },
+    {
       "apiName": "processTransaction",
       "displayName": "处理交易",
       "description": "发起一笔资金转账交易",
@@ -1807,6 +3319,30 @@
       "status": "active"
     },
     {
+      "apiName": "approveLoan",
+      "displayName": "审批贷款",
+      "description": "审批贷款申请",
+      "parameters": [
+        {
+          "apiName": "loan_id",
+          "displayName": "贷款ID",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "approved",
+          "displayName": "是否批准",
+          "type": "boolean",
+          "description": "",
+          "required": true
+        }
+      ],
+      "targetObjectType": "Loan",
+      "domain": "finance",
+      "status": "active"
+    },
+    {
       "apiName": "recordDiagnosis",
       "displayName": "记录诊断",
       "description": "为患者记录一条诊断信息",
@@ -1841,6 +3377,37 @@
         }
       ],
       "targetObjectType": "Diagnosis",
+      "domain": "healthcare",
+      "status": "active"
+    },
+    {
+      "apiName": "submitLabOrder",
+      "displayName": "提交检验申请",
+      "description": "为患者提交检验申请",
+      "parameters": [
+        {
+          "apiName": "patient_id",
+          "displayName": "患者ID",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "encounter_id",
+          "displayName": "就诊ID",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "test_name",
+          "displayName": "检验项目",
+          "type": "string",
+          "description": "",
+          "required": true
+        }
+      ],
+      "targetObjectType": "LabResult",
       "domain": "healthcare",
       "status": "active"
     },
@@ -1917,6 +3484,37 @@
         }
       ],
       "targetObjectType": "Review",
+      "domain": "ecommerce",
+      "status": "active"
+    },
+    {
+      "apiName": "issueCoupon",
+      "displayName": "发放优惠券",
+      "description": "向用户发放优惠券",
+      "parameters": [
+        {
+          "apiName": "code",
+          "displayName": "券码",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "type",
+          "displayName": "类型",
+          "type": "string",
+          "description": "",
+          "required": true
+        },
+        {
+          "apiName": "discount_value",
+          "displayName": "折扣值",
+          "type": "decimal",
+          "description": "",
+          "required": true
+        }
+      ],
+      "targetObjectType": "Coupon",
       "domain": "ecommerce",
       "status": "active"
     }

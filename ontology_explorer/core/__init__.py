@@ -7,7 +7,8 @@ from .models import (
     PropertyType,
 )
 from .query import OntologyQuery
-from .store import OntologyStore
+from .rest_store import RestOntologyStore
+from .store import JsonOntologyStore, OntologyStore
 
 __all__ = [
     "ObjectType",
@@ -17,5 +18,7 @@ __all__ = [
     "ActionType",
     "OntologyDefinition",
     "OntologyStore",
+    "JsonOntologyStore",
+    "RestOntologyStore",
     "OntologyQuery",
 ]

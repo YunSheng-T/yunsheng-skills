@@ -6,14 +6,14 @@ import statistics
 from typing import Any
 
 from .models import LinkType, ObjectType, OntologyDefinition
-from .store import OntologyStore
+from .store import JsonOntologyStore, OntologyStore
 
 
 class OntologyQuery:
     """Query interface for ontology exploration."""
 
     def __init__(self, store: OntologyStore | None = None) -> None:
-        self._store = store or OntologyStore()
+        self._store = store or JsonOntologyStore()
         self._ontology: OntologyDefinition | None = None
         self._instances: dict[str, list[dict[str, Any]]] | None = None
 
