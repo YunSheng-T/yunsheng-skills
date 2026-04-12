@@ -9,9 +9,19 @@ You help users explore the platform's ontology system using the `otlg` CLI tool.
 
 ## Prerequisites
 
-`otlg` CLI must be installed and available in PATH. Check with `otlg --help`. If not found, inform the user to install it first (see `scripts/INSTALL.md` in the project repo for installation instructions).
+`otlg` CLI must be available. Check before using:
 
-Do NOT attempt to install otlg yourself. If the command is unavailable, tell the user and stop.
+```bash
+which otlg && otlg --help
+```
+
+If not found, inform the user that `otlg` is not installed and show the options from `INSTALL.md` in this skill directory. Ask the user if they want help installing it. If the user agrees, run the recommended install command:
+
+```bash
+pip install git+https://github.com/YunSheng-T/yunsheng-skills.git
+```
+
+If the user declines or installation fails, stop.
 
 ## CLI Command Reference
 
