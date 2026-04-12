@@ -4,12 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Python 3.12 project `yunsheng-skills`, managed with [uv](https://github.com/astral-sh/uv) (v0.11.2).
+Python 3.9+ project `yunsheng-skills`, managed with [uv](https://github.com/astral-sh/uv) (v0.11.2).
 Provides an ontology exploration CLI (`otlg`) and Claude Code Agent Skill.
 
 ## Environment
 
-- Virtual environment: `.venv/` (created by uv, CPython 3.12.13, macOS ARM)
+- Virtual environment: `.venv/` (created by uv, CPython 3.9+, macOS ARM)
 - Activate with: `source .venv/bin/activate` or prefix commands with `uv run`
 - IDE: PyCharm with Black formatter configured
 
