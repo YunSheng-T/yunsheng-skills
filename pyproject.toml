@@ -1,6 +1,7 @@
 [project]
 name = "yunsheng-skills"
 version = "0.1.0"
+description = "Ontology Explorer CLI (otlg) and Claude Code Agent Skill for querying business ontology data"
 requires-python = ">=3.8"
 dependencies = []
 

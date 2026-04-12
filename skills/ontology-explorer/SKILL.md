@@ -116,10 +116,10 @@ otlg search Supplier "华联"
 
 | Domain | Description | Object Types |
 |--------|-------------|-------------|
-| supply_chain | 供应链管理 | Supplier, ScProduct, Warehouse, PurchaseOrder, Shipment |
-| finance | 金融服务 | FiCustomer, Account, Transaction, FiProduct |
-| healthcare | 医疗健康 | Patient, Provider, Diagnosis, Medication, Encounter |
-| ecommerce | 电商平台 | EcomUser, Merchant, EcomProduct, EcomOrder, Review |
+| supply_chain | 供应链管理 | Supplier, ScProduct, Warehouse, PurchaseOrder, Shipment, Contract, Inventory |
+| finance | 金融服务 | FiCustomer, Account, Transaction, FiProduct, CreditCard, Loan |
+| healthcare | 医疗健康 | Patient, Provider, Diagnosis, Medication, Encounter, LabResult, InsuranceClaim |
+| ecommerce | 电商平台 | EcomUser, Merchant, EcomProduct, EcomOrder, Review, Coupon |
 
 ## Output Format
 

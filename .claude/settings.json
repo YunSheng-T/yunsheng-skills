@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(uv run:*)",
+      "Bash(uv sync:*)",
+      "Bash(otlg:*)",
+      "Bash(python3:*)",
+      "Bash(pip3:*)",
+      "Bash(gh:*)",
+      "Bash(cp:*)",
+      "Bash(mkdir:*)",
+      "Bash(chmod:*)",
+      "WebSearch",
+      "WebFetch"
+    ]
+  }
+}

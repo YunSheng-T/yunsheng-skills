@@ -1,12 +1,15 @@
 # Python
 __pycache__/
 *.py[cod]
+*.pyo
 *.egg-info/
+*.egg
 .eggs/
 
 # Build
 dist/
 build/
+*.whl
 
 # uv
 uv.lock
@@ -20,3 +23,13 @@ uv.lock
 
 # OS
 .DS_Store
+
+# Test & Coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Claude Code
+.claude/settings.local.json
