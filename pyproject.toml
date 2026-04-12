@@ -15,3 +15,6 @@ package = true
 
 [tool.setuptools.packages.find]
 include = ["ontology_explorer*"]
+
+[tool.setuptools.package-data]
+ontology_explorer = ["data/**/*.json"]
