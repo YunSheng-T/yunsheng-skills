@@ -50,3 +50,13 @@ For domain and type listings, see `references/DOMAINS.md`.
 - When the user asks about a specific type, run `otlg type <name>` to show full details before querying instances.
 - Use `--limit` to avoid flooding output with large result sets.
 - For aggregation questions, identify the correct type and numeric field first via `otlg type <name>`.
+
+## Ontology Reasoning Constraints
+
+The ontology's semantics and relationships are authoritative — they define how data is structured and connected. When reasoning about data:
+
+- **Follow defined relationships only.** Use `otlg links --source <type>` and `otlg links-of <type> <pk>` to discover real connections. Do not assume relationships that are not defined in the ontology.
+- **Only reference types present in the current context.** Do not speculate about object types, properties, or links that have not been observed via `otlg type`, `otlg types`, or `otlg links` output. If a type is not in the explored domain, it does not exist in that context.
+- **Respect property types and constraints.** When filtering or aggregating, use the property's declared type (`string`, `integer`, `decimal`, `boolean`, `timestamp`) as shown by `otlg type <name>`. Do not treat properties as having types they were not declared with.
+- **Infer via links, not assumptions.** If a user asks "which patients had this diagnosis?", traverse `patient_diagnoses` link via `otlg links-of`. Do not guess field names or join logic — the link definition is the only valid traversal path.
+- **Cross-domain connections require explicit links.** Types from different domains (e.g., `Patient` and `Supplier`) are unrelated unless a link type connects them. Never assume cross-domain relationships without verifying via `otlg links`.
