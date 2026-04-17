@@ -21,6 +21,22 @@
 | `otlg aggregate <type> <field> --func <fn>` | Aggregate: count/sum/avg/min/max | `otlg aggregate Transaction amount --func sum` |
 | `otlg links-of <type> <pk>` | Show linked objects for an instance | `otlg links-of Supplier SUP001` |
 
+## Action Commands
+
+Execute an action type with dynamic parameters. Parameters are passed as `key=value` pairs, matched against the action's defined parameters.
+
+```bash
+otlg action <action_name> key1=value1 key2=value2 ...
+```
+
+| Example | Description |
+|---------|-------------|
+| `otlg action createPurchaseOrder supplier_id=SUP001 items="100x LED模组"` | Create a purchase order |
+| `otlg action processTransaction from_account=ACC001 to_account=ACC002 amount=1000.50 type=转账` | Process a transaction |
+| `otlg action approveLoan loan_id=LN001 approved=true` | Approve a loan |
+
+Parameters are automatically type-coerced based on the action definition (`string`, `integer`, `decimal`, `boolean`). Missing required parameters or unknown parameters produce clear error messages.
+
 ## Filter Syntax
 
 Use `--filter key=value` for instance queries. Repeatable for multiple conditions:
@@ -79,4 +95,10 @@ otlg aggregate ScProduct unit_price --func avg
 ```bash
 otlg search Patient "糖尿病" --limit 5
 otlg search EcomProduct "蓝牙" --limit 10
+```
+
+### "Execute an action"
+```bash
+otlg action createPurchaseOrder supplier_id=SUP001 items="100x LED模组"
+otlg action processTransaction from_account=ACC001 to_account=ACC002 amount=1000.50 type=转账
 ```

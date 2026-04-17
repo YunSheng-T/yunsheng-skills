@@ -103,6 +103,12 @@ def _build_parser() -> argparse.ArgumentParser:
     p_links_of.add_argument("primary_key", help="Primary key value")
     p_links_of.set_defaults(func=commands.cmd_links_of)
 
+    # ── action ──────────────────────────────────────────────────────
+    p_action = subparsers.add_parser("action", help="Execute an action type with parameters")
+    p_action.add_argument("action_name", help="Action type API name (e.g. createPurchaseOrder)")
+    p_action.add_argument("params", nargs="*", help="Action parameters as key=value pairs")
+    p_action.set_defaults(func=commands.cmd_action)
+
     return parser
 
 

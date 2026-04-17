@@ -115,7 +115,25 @@ otlg search Diagnosis "糖尿病"
 
 ---
 
-### 场景 7: 查看新增类型
+### 场景 7: 执行操作
+
+**你说：** "帮我创建一个采购单，供应商是 SUP001，采购 100 个 LED 模组"
+
+**Agent 会执行：**
+```bash
+otlg action createPurchaseOrder supplier_id=SUP001 items="100x LED模组"
+```
+
+参数根据 action 定义自动匹配和类型转换，缺少必填参数会提示。
+
+**更多操作场景：**
+- "处理一笔转账，从 ACC001 到 ACC002，金额 5000" → `otlg action processTransaction from_account=ACC001 to_account=ACC002 amount=5000 type=转账`
+- "审批贷款 LN001" → `otlg action approveLoan loan_id=LN001 approved=true`
+- "更新发货单 SHP003 的状态为已签收" → `otlg action updateShipmentStatus shipment_id=SHP003 status=已签收`
+
+---
+
+### 场景 8: 查看新增类型
 
 **你说：** "金融域有哪些类型？信用卡和贷款的数据看一下"
 
