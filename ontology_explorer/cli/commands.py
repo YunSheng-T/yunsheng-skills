@@ -150,13 +150,14 @@ def cmd_action(args: Any) -> None:
         sys.exit(1)
 
     # Parse dynamic key=value parameters
-    params: dict[str, str] = {}
+    # Support repeated keys for arrays: items=a items=b → {"items": ["a", "b"]}
+    params: dict[str, list[str]] = {}
     for item in args.params:
         if "=" not in item:
             print(f"Error: invalid parameter format '{item}', expected key=value", file=sys.stderr)
             sys.exit(1)
         k, v = item.split("=", 1)
-        params[k] = v
+        params.setdefault(k, []).append(v)
 
     # Validate required parameters
     missing = [
@@ -168,7 +169,8 @@ def cmd_action(args: Any) -> None:
         print(f"Required parameters for '{args.action_name}':", file=sys.stderr)
         for p in action_def.parameters:
             req = "required" if p.required else "optional"
-            print(f"  {p.api_name} ({p.type}, {req}) — {p.display_name}", file=sys.stderr)
+            arr = "[]" if p.array else ""
+            print(f"  {p.api_name} ({p.type}{arr}, {req}) — {p.display_name}", file=sys.stderr)
         sys.exit(1)
 
     # Validate unknown parameters
@@ -182,16 +184,17 @@ def cmd_action(args: Any) -> None:
     # Type coercion based on action parameter definitions
     typed_params: dict[str, Any] = {}
     param_defs = {p.api_name: p for p in action_def.parameters}
-    for k, v in params.items():
+    for k, values in params.items():
         pdef = param_defs[k]
-        if pdef.type == "integer":
-            typed_params[k] = int(v)
-        elif pdef.type == "decimal":
-            typed_params[k] = float(v)
-        elif pdef.type == "boolean":
-            typed_params[k] = v.lower() in ("true", "1", "yes")
+        coerced = [_coerce_value(v, pdef.type) for v in values]
+        # If param is array type, keep as list; otherwise take single value
+        if pdef.array:
+            typed_params[k] = coerced
         else:
-            typed_params[k] = v
+            if len(coerced) > 1:
+                print(f"Error: parameter '{k}' is not an array, got {len(coerced)} values", file=sys.stderr)
+                sys.exit(1)
+            typed_params[k] = coerced[0]
 
     result = {
         "actionApiName": action_def.api_name,
@@ -201,3 +204,14 @@ def cmd_action(args: Any) -> None:
         "status": "submitted",
     }
     _output(result)
+
+
+def _coerce_value(v: str, ptype: str) -> Any:
+    """Coerce a string value to the declared parameter type."""
+    if ptype == "integer":
+        return int(v)
+    elif ptype == "decimal":
+        return float(v)
+    elif ptype == "boolean":
+        return v.lower() in ("true", "1", "yes")
+    return v

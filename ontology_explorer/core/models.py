@@ -216,6 +216,7 @@ class ActionParameter:
     type: str
     description: str = ""
     required: bool = True
+    array: bool = False
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -224,6 +225,7 @@ class ActionParameter:
             "type": self.type,
             "description": self.description,
             "required": self.required,
+            "array": self.array,
         }
 
     @classmethod
@@ -234,6 +236,7 @@ class ActionParameter:
             type=data["type"],
             description=data.get("description", ""),
             required=data.get("required", True),
+            array=data.get("array", False),
         )
 
 

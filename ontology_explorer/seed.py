@@ -517,7 +517,7 @@ def _build_supply_chain_types() -> tuple[list[ObjectType], list[LinkType], list[
             domain="supply_chain",
             parameters=[
                 ActionParameter("supplier_id", "供应商ID", "string", required=True),
-                ActionParameter("items", "采购明细", "string", required=True),
+                ActionParameter("items", "采购明细", "string", required=True, array=True),
             ],
         ),
         ActionType(

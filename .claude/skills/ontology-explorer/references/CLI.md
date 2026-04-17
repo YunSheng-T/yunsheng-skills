@@ -31,9 +31,11 @@ otlg action <action_name> key1=value1 key2=value2 ...
 
 | Example | Description |
 |---------|-------------|
-| `otlg action createPurchaseOrder supplier_id=SUP001 items="100x LED模组"` | Create a purchase order |
+| `otlg action createPurchaseOrder supplier_id=SUP001 items=PRD001 items=PRD002` | Create purchase order (array param via repeated key) |
 | `otlg action processTransaction from_account=ACC001 to_account=ACC002 amount=1000.50 type=转账` | Process a transaction |
 | `otlg action approveLoan loan_id=LN001 approved=true` | Approve a loan |
+
+**Array parameters:** Repeat the key for each value — `items=PRD001 items=PRD002 items=PRD003` produces `["PRD001", "PRD002", "PRD003"]`. Non-array parameters with repeated values will error.
 
 Parameters are automatically type-coerced based on the action definition (`string`, `integer`, `decimal`, `boolean`). Missing required parameters or unknown parameters produce clear error messages.
 
