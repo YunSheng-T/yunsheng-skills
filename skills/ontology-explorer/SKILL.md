@@ -38,7 +38,18 @@ Follow this sequence when exploring a domain or type for the first time:
 4. otlg instances <type_name> --limit 5 → see sample data
 5. otlg links --source <type_name>      → see relationships
 6. otlg links-of <type_name> <pk>       → traverse relationships for an instance
+7. otlg actions --domain <domain>       → see available actions
 ```
+
+## Capability Discovery
+
+When the user asks about **what can be done** with an object (e.g., "can we expedite delivery?", "can we approve this loan?", "is there a way to update status?"), you must check both data AND actions:
+
+1. **Check actions on the target type:** `otlg actions --domain <domain>` — find actions where `targetObjectType` matches the relevant type.
+2. **Check actions on linked types:** Use `otlg links --source <type>` to find related types, then check if any actions target those types.
+3. **Report available capabilities:** Tell the user which actions exist, their parameters (required vs optional), and whether the current data satisfies preconditions.
+
+Do NOT answer capability questions by guessing — always verify via `otlg actions`.
 
 For full command details, filters, and query patterns, see `references/CLI.md`.
 For domain and type listings, see `references/DOMAINS.md`.
