@@ -16,8 +16,15 @@ def _get_query(args: Any) -> OntologyQuery:
 
 
 def _output(data: Any) -> None:
-    """Print JSON output to stdout."""
-    print(json.dumps(data, ensure_ascii=False, indent=2))
+    """Print JSON output to stdout.
+
+    Uses ensure_ascii=False for UTF-8 terminals (macOS/Linux).
+    Falls back to ensure_ascii=True for non-UTF-8 terminals (Windows PowerShell/GBK)
+    to prevent garbled Chinese characters.
+    """
+    encoding = getattr(sys.stdout, "encoding", None) or ""
+    ensure_ascii = not encoding.lower().replace("-", "").startswith("utf8")
+    print(json.dumps(data, ensure_ascii=ensure_ascii, indent=2))
 
 
 def _parse_filters(raw: list[str] | None) -> dict[str, str] | None:
