@@ -54,6 +54,7 @@ class OntologyQuery:
             if t.api_name == api_name:
                 result = t.to_dict()
                 result["links"] = self._get_links_for_type(api_name)
+                result["actions"] = self._store.get_actions_for_type(api_name)
                 # Delegate instance count to store (cheap for JSON with PK index)
                 try:
                     probe = self._store.query_instances(api_name, limit=1)

@@ -152,6 +152,38 @@ class OntologyStore(ABC):
 
         return result
 
+    def get_actions_for_type(self, type_api_name: str) -> list[dict[str, Any]]:
+        """Get actions targeting a specific object type.
+
+        Default implementation filters from loaded ontology.
+        REST backends may override to call a dedicated endpoint.
+        """
+        try:
+            ontology = self.load_ontology()
+        except Exception:
+            return []
+
+        actions = []
+        for action in ontology.action_types:
+            if action.target_object_type == type_api_name:
+                actions.append({
+                    "apiName": action.api_name,
+                    "displayName": action.display_name,
+                    "description": action.description,
+                    "parameters": [
+                        {
+                            "apiName": p.api_name,
+                            "displayName": p.display_name,
+                            "type": p.type,
+                            "required": p.required,
+                            "array": p.array,
+                        }
+                        for p in action.parameters
+                    ],
+                    "domain": action.domain,
+                })
+        return actions
+
     # ── Helpers for default implementations ─────────────────────────────
 
     def _resolve_pk_field(self, type_api_name: str) -> str | None:
